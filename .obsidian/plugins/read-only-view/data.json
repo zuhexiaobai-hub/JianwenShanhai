@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "useGlobPatterns": false,
+  "caseSensitive": true,
+  "debug": false,
+  "debugVerbosePaths": false,
+  "includeRules": [],
+  "excludeRules": []
+}

@@ -1,0 +1,22 @@
+{
+  "language": "auto",
+  "outputLocation": "current",
+  "outputFolder": "PDF Exports",
+  "marginMm": 7,
+  "includeTitle": true,
+  "headerText": "",
+  "footerText": "",
+  "rememberLastExportOptions": true,
+  "shareAfterExport": true,
+  "openAfterExport": true,
+  "noteExportMode": "selectable",
+  "pagePreset": "current",
+  "pageOrientation": "portrait",
+  "colorMode": "color",
+  "contentScalePercent": 100,
+  "imageRasterScale": 3,
+  "currentPageWidthPx": 830,
+  "currentPageHeightPx": 696,
+  "zipEmbedDepth": 0,
+  "previewEnabled": false
+}
