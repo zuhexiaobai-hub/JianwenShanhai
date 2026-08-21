@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "obsidian同步GitHub.md",
+                "file": "线性代数.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,17 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "obsidian同步GitHub"
+              "title": "线性代数"
+            }
+          },
+          {
+            "id": "352472d089928992",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
         ]
@@ -112,8 +122,7 @@
         }
       }
     ],
-    "currentTab": 0,
-    "pinned": true
+    "currentTab": 0
   },
   "right": {
     "id": "94ead29416cab95b",
@@ -125,7 +134,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "obsidian同步GitHub.md",
+            "file": "线性代数.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -199,36 +208,36 @@
   },
   "active": "c50625bc1b30cec8",
   "lastOpenFiles": [
-    "实分析/测度论.md",
-    "仓库/预测度.md",
-    "日精进.md",
+    "仓库/特征值相关计算.md",
     "线性代数.md",
-    "仓库/Lebesgue测度.md",
-    "线性代数.pdf",
-    "仓库/Jordan标准型.md",
-    "仓库/二次型.md",
-    "仓库/相似.md",
-    "知识库建立.md",
-    "仓库/多项式.md",
-    "仓库/矩阵.md",
     "仓库/线性空间.md",
-    "仓库/线性变换.md",
-    "附件",
-    "实分析/Lebesgue 积分.md",
     "仓库/field.md",
-    "仓库/sigma-finite.md",
-    "仓库/度量空间.md",
-    "实分析/实分析预备知识.md",
-    "仓库/半代数和代数.md",
-    "未知排版测试.md",
-    "未命名.md",
-    "未命名.base",
-    "仓库/选择公理.md",
-    "仓库/测度.md",
-    "仓库",
-    "仓库/Extension-theorem.md",
+    "仓库/二次型.md",
+    "仓库/特征向量.md",
+    "仓库/正定型与正定矩阵.md",
     "仓库/Caratheodory构造法.md",
-    "仓库/外测度.md",
+    "仓库/二次型化简方法.md",
+    "仓库/惯性定理.md",
+    "仓库/合同标准型.md",
+    "仓库/矩阵对角化.md",
+    "仓库/Jordan标准型.md",
+    "仓库/Hausdorff原理.md",
+    "仓库/lambda-矩阵.md",
+    "仓库/三种因子.md",
+    "仓库/Jordan型计算.md",
+    "仓库/相似.md",
+    "仓库/Lebesgue测度.md",
+    "仓库/Jordan 标准型.md",
+    "仓库/双线性函数.md",
+    "仓库/线性函数.md",
+    "仓库/内积.md",
+    "仓库/合同.md",
+    "实分析/实分析预备知识.md",
+    "仓库/良序原理.md",
+    "线性代数.pdf",
+    "附件",
+    "未命名.base",
+    "仓库",
     "Pasted image 20260818190333.png",
     "Excalidraw",
     "$",
