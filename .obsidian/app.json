@@ -41,7 +41,7 @@
   "livePreview": false,
   "showLineNumber": false,
   "propertiesInDocument": "source",
-  "strictLineBreaks": false,
+  "strictLineBreaks": true,
   "rightToLeft": false,
   "spellcheck": true,
   "autoPairMarkdown": true,

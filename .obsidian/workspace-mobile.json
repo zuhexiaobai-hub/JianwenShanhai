@@ -32,16 +32,31 @@
             }
           },
           {
-            "id": "352472d089928992",
+            "id": "d054bd6f35831d85",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "线性代数.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "线性代数"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -122,7 +137,8 @@
         }
       }
     ],
-    "currentTab": 0
+    "currentTab": 0,
+    "pinned": true
   },
   "right": {
     "id": "94ead29416cab95b",
@@ -206,10 +222,15 @@
       "mobile-pdf-exporter:导出预览版 PDF": false
     }
   },
-  "active": "c50625bc1b30cec8",
+  "active": "d054bd6f35831d85",
   "lastOpenFiles": [
-    "仓库/特征值相关计算.md",
+    "实分析/测度论.md",
+    "仓库/内积.md",
     "线性代数.md",
+    "仓库/双线性函数.md",
+    "未知排版测试.md",
+    "日精进.md",
+    "仓库/特征值相关计算.md",
     "仓库/线性空间.md",
     "仓库/field.md",
     "仓库/二次型.md",
@@ -228,12 +249,7 @@
     "仓库/相似.md",
     "仓库/Lebesgue测度.md",
     "仓库/Jordan 标准型.md",
-    "仓库/双线性函数.md",
     "仓库/线性函数.md",
-    "仓库/内积.md",
-    "仓库/合同.md",
-    "实分析/实分析预备知识.md",
-    "仓库/良序原理.md",
     "线性代数.pdf",
     "附件",
     "未命名.base",
