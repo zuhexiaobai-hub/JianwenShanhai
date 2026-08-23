@@ -8,37 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c50625bc1b30cec8",
+            "id": "d00b121137f35b6d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "线性代数.md",
+                "file": "math仓库/三种因子.md",
                 "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": true,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "线性代数"
-            }
-          },
-          {
-            "id": "d054bd6f35831d85",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "线性代数.md",
-                "mode": "source",
                 "source": true,
                 "backlinks": true,
                 "backlinkOpts": {
@@ -52,11 +28,20 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "线性代数"
+              "title": "三种因子"
+            }
+          },
+          {
+            "id": "777466eab4d245e1",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -150,7 +135,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "线性代数.md",
+            "file": "math仓库/三种因子.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -222,38 +207,38 @@
       "mobile-pdf-exporter:导出预览版 PDF": false
     }
   },
-  "active": "d054bd6f35831d85",
+  "active": "d00b121137f35b6d",
   "lastOpenFiles": [
-    "实分析/测度论.md",
-    "仓库/内积.md",
+    "math仓库/lambda-矩阵.md",
+    "math仓库/三种因子.md",
+    "math仓库/特征值相关计算.md",
     "线性代数.md",
-    "仓库/双线性函数.md",
+    "math仓库/双线性函数.md",
+    "math仓库/度量空间.md",
+    "math仓库/特征向量.md",
+    "math仓库/矩阵.md",
+    "math仓库/内积.md",
+    "math仓库/二次型.md",
+    "实分析/测度论.md",
+    "实分析/实分析预备知识.md",
     "未知排版测试.md",
+    "math仓库/矩阵对角化.md",
     "日精进.md",
-    "仓库/特征值相关计算.md",
-    "仓库/线性空间.md",
-    "仓库/field.md",
-    "仓库/二次型.md",
-    "仓库/特征向量.md",
-    "仓库/正定型与正定矩阵.md",
-    "仓库/Caratheodory构造法.md",
-    "仓库/二次型化简方法.md",
-    "仓库/惯性定理.md",
-    "仓库/合同标准型.md",
-    "仓库/矩阵对角化.md",
-    "仓库/Jordan标准型.md",
-    "仓库/Hausdorff原理.md",
-    "仓库/lambda-矩阵.md",
-    "仓库/三种因子.md",
-    "仓库/Jordan型计算.md",
-    "仓库/相似.md",
-    "仓库/Lebesgue测度.md",
-    "仓库/Jordan 标准型.md",
-    "仓库/线性函数.md",
+    "math仓库/线性空间.md",
+    "math仓库/field.md",
+    "math仓库/正定型与正定矩阵.md",
+    "math仓库/Caratheodory构造法.md",
+    "math仓库/二次型化简方法.md",
+    "math仓库/惯性定理.md",
+    "math仓库/合同标准型.md",
+    "math仓库/Jordan标准型.md",
+    "math仓库/Hausdorff原理.md",
+    "math仓库/Jordan型计算.md",
+    "math仓库/相似.md",
     "线性代数.pdf",
     "附件",
     "未命名.base",
-    "仓库",
+    "math仓库",
     "Pasted image 20260818190333.png",
     "Excalidraw",
     "$",

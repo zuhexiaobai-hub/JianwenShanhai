@@ -1,0 +1,10 @@
+{
+  "read-only-view:toggle-plugin-enabled": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "V"
+    }
+  ]
+}
