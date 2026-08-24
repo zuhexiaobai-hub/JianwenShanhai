@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "math仓库/三种因子.md",
+                "file": "mathhub/双线性函数.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -28,20 +28,35 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "三种因子"
+              "title": "双线性函数"
             }
           },
           {
-            "id": "777466eab4d245e1",
+            "id": "604d054929eb2c25",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "type": "markdown",
+              "state": {
+                "file": "线性代数.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "线性代数"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -135,7 +150,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "math仓库/三种因子.md",
+            "file": "线性代数.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -207,38 +222,39 @@
       "mobile-pdf-exporter:导出预览版 PDF": false
     }
   },
-  "active": "d00b121137f35b6d",
+  "active": "604d054929eb2c25",
   "lastOpenFiles": [
-    "math仓库/lambda-矩阵.md",
-    "math仓库/三种因子.md",
-    "math仓库/特征值相关计算.md",
+    "mathhub/引入lambda-矩阵.md",
     "线性代数.md",
-    "math仓库/双线性函数.md",
-    "math仓库/度量空间.md",
-    "math仓库/特征向量.md",
-    "math仓库/矩阵.md",
-    "math仓库/内积.md",
-    "math仓库/二次型.md",
+    "mathhub/三种因子.md",
+    "mathhub/二次型.md",
+    "mathhub/特征值.md",
+    "mathhub/极小多项式.md",
+    "mathhub/双线性函数.md",
+    "mathhub/酉空间.md",
+    "mathhub/特征向量.md",
+    "mathhub/相似.md",
+    "mathhub/Euclid空间.md",
+    "mathhub/正定型与正定矩阵.md",
+    "Lemma",
+    "mathhub/Jordan型计算.md",
+    "mathhub/度量空间.md",
+    "mathhub/矩阵.md",
     "实分析/测度论.md",
     "实分析/实分析预备知识.md",
     "未知排版测试.md",
-    "math仓库/矩阵对角化.md",
+    "mathhub/矩阵对角化.md",
     "日精进.md",
-    "math仓库/线性空间.md",
-    "math仓库/field.md",
-    "math仓库/正定型与正定矩阵.md",
-    "math仓库/Caratheodory构造法.md",
-    "math仓库/二次型化简方法.md",
-    "math仓库/惯性定理.md",
-    "math仓库/合同标准型.md",
-    "math仓库/Jordan标准型.md",
-    "math仓库/Hausdorff原理.md",
-    "math仓库/Jordan型计算.md",
-    "math仓库/相似.md",
+    "mathhub/线性空间.md",
+    "mathhub/field.md",
+    "mathhub/Caratheodory构造法.md",
+    "mathhub/二次型化简方法.md",
+    "mathhub/惯性定理.md",
+    "mathhub/合同标准型.md",
     "线性代数.pdf",
     "附件",
     "未命名.base",
-    "math仓库",
+    "mathhub",
     "Pasted image 20260818190333.png",
     "Excalidraw",
     "$",

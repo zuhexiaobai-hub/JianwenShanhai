@@ -1,10 +1,18 @@
 {
-  "read-only-view:toggle-plugin-enabled": [
+  "read-only-view:enable-plugin": [
     {
       "modifiers": [
         "Mod"
       ],
-      "key": "V"
+      "key": "A"
+    }
+  ],
+  "read-only-view:disable-plugin": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "A"
     }
   ]
 }

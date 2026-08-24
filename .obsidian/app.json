@@ -32,7 +32,7 @@
     "editor:insert-codeblock"
   ],
   "mobilePullAction": "",
-  "newFileLocation": "folder",
+  "newFileLocation": "root",
   "alwaysUpdateLinks": true,
   "showUnsupportedFiles": true,
   "trashOption": "local",
