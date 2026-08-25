@@ -29,7 +29,8 @@
     "editor:copy",
     "editor:insert-footnote",
     "editor:insert-callout",
-    "editor:insert-codeblock"
+    "editor:insert-codeblock",
+    "bases:insert"
   ],
   "mobilePullAction": "",
   "newFileLocation": "root",

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mathhub/双线性函数.md",
+                "file": "线性代数.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "双线性函数"
+              "title": "线性代数"
             }
           },
           {
@@ -226,14 +226,18 @@
   "lastOpenFiles": [
     "mathhub/引入lambda-矩阵.md",
     "线性代数.md",
+    "mathhub/矩阵对角化.md",
+    "mathhub/相似.md",
+    "mathhub/极小多项式.md",
+    "mathhub/特征值.md",
+    "mathhub/线性映射.md",
+    "mathhub/线性空间.md",
+    "mathhub/双线性函数.md",
+    "mathhub/共轭合同.md",
     "mathhub/三种因子.md",
     "mathhub/二次型.md",
-    "mathhub/特征值.md",
-    "mathhub/极小多项式.md",
-    "mathhub/双线性函数.md",
     "mathhub/酉空间.md",
     "mathhub/特征向量.md",
-    "mathhub/相似.md",
     "mathhub/Euclid空间.md",
     "mathhub/正定型与正定矩阵.md",
     "Lemma",
@@ -243,14 +247,10 @@
     "实分析/测度论.md",
     "实分析/实分析预备知识.md",
     "未知排版测试.md",
-    "mathhub/矩阵对角化.md",
     "日精进.md",
-    "mathhub/线性空间.md",
     "mathhub/field.md",
     "mathhub/Caratheodory构造法.md",
     "mathhub/二次型化简方法.md",
-    "mathhub/惯性定理.md",
-    "mathhub/合同标准型.md",
     "线性代数.pdf",
     "附件",
     "未命名.base",
