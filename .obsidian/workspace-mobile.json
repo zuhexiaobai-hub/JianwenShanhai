@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c4444ca55a93a0a8",
+            "id": "0ef83fc8f11b1724",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "线性代数.md",
+                "file": "mathhub/Jordan型计算.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": true,
@@ -23,22 +23,12 @@
                   "sortOrder": "alphabetical",
                   "showSearch": false,
                   "searchQuery": "",
-                  "backlinkCollapsed": false,
+                  "backlinkCollapsed": true,
                   "unlinkedCollapsed": true
                 }
               },
               "icon": "lucide-file",
-              "title": "线性代数"
-            }
-          },
-          {
-            "id": "5edbc72521b8db1d",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "title": "Jordan型计算"
             }
           }
         ]
@@ -135,7 +125,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "线性代数.md",
+            "file": "mathhub/Jordan型计算.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -204,16 +194,24 @@
       "random-note:开始漫游笔记": false,
       "publish:发布更改": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
-      "mobile-pdf-exporter:导出预览版 PDF": false
+      "mobile-pdf-exporter:导出预览版 PDF": false,
+      "css-editor:Open CSS editor quick switcher": false
     }
   },
-  "active": "c4444ca55a93a0a8",
+  "active": "0ef83fc8f11b1724",
   "lastOpenFiles": [
+    "mathhub/Jordan标准型.md",
     "线性代数.md",
-    "mathhub/多项式.md",
+    "英文写数学.md",
     "mathhub/矩阵的极小多项式.md",
-    "mathhub/二次型.md",
     "mathhub/Jordan型计算.md",
+    "知识库建立.md",
+    "mathhub/测度.md",
+    "mathhub/度量空间.md",
+    "mathhub/相似.md",
+    "mathhub/特征值.md",
+    "mathhub/多项式.md",
+    "mathhub/二次型.md",
     "mathhub/矩阵对角化.md",
     "mathhub/Euclid空间.md",
     "mathhub/合同.md",
@@ -225,17 +223,10 @@
     "mathhub/线性空间.md",
     "mathhub/field.md",
     "mathhub/半代数和代数.md",
-    "mathhub/相似.md",
-    "mathhub/特征值.md",
     "mathhub/线性映射.md",
     "mathhub/共轭合同.md",
     "mathhub/特征向量.md",
-    "mathhub/正定型与正定矩阵.md",
     "Lemma",
-    "mathhub/度量空间.md",
-    "实分析/测度论.md",
-    "实分析/实分析预备知识.md",
-    "未知排版测试.md",
     "线性代数.pdf",
     "附件",
     "未命名.base",

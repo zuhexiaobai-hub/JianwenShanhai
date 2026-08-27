@@ -6,6 +6,8 @@
   "floatingNavigation": true,
   "showRibbon": true,
   "monospaceFontFamily": "",
-  "enabledCssSnippets": [],
+  "enabledCssSnippets": [
+    "formula-scroll"
+  ],
   "theme": "moonstone"
 }

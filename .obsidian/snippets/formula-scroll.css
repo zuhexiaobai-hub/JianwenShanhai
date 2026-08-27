@@ -1,0 +1,22 @@
+/* 防止整篇阅读视图被长公式撑宽 */
+.markdown-preview-view,
+.markdown-preview-sizer,
+.markdown-preview-section {
+    max-width: 100%;
+    min-width: 0;
+}
+
+.markdown-preview-view {
+    overflow-x: hidden;
+}
+
+/* 仅让过长的行间公式横向滚动 */
+.markdown-rendered .math-block {
+    display: block;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+}
