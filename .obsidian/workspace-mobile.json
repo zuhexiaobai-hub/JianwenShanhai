@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d00b121137f35b6d",
+            "id": "c4444ca55a93a0a8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,31 +32,16 @@
             }
           },
           {
-            "id": "604d054929eb2c25",
+            "id": "5edbc72521b8db1d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "线性代数.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "线性代数"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -222,35 +207,35 @@
       "mobile-pdf-exporter:导出预览版 PDF": false
     }
   },
-  "active": "604d054929eb2c25",
+  "active": "c4444ca55a93a0a8",
   "lastOpenFiles": [
-    "mathhub/引入lambda-矩阵.md",
     "线性代数.md",
+    "mathhub/多项式.md",
+    "mathhub/矩阵的极小多项式.md",
+    "mathhub/二次型.md",
+    "mathhub/Jordan型计算.md",
     "mathhub/矩阵对角化.md",
+    "mathhub/Euclid空间.md",
+    "mathhub/合同.md",
+    "mathhub/lambda-矩阵.md",
+    "mathhub/三种因子.md",
+    "mathhub/矩阵.md",
+    "mathhub/双线性函数.md",
+    "mathhub/酉空间.md",
+    "mathhub/线性空间.md",
+    "mathhub/field.md",
+    "mathhub/半代数和代数.md",
     "mathhub/相似.md",
-    "mathhub/极小多项式.md",
     "mathhub/特征值.md",
     "mathhub/线性映射.md",
-    "mathhub/线性空间.md",
-    "mathhub/双线性函数.md",
     "mathhub/共轭合同.md",
-    "mathhub/三种因子.md",
-    "mathhub/二次型.md",
-    "mathhub/酉空间.md",
     "mathhub/特征向量.md",
-    "mathhub/Euclid空间.md",
     "mathhub/正定型与正定矩阵.md",
     "Lemma",
-    "mathhub/Jordan型计算.md",
     "mathhub/度量空间.md",
-    "mathhub/矩阵.md",
     "实分析/测度论.md",
     "实分析/实分析预备知识.md",
     "未知排版测试.md",
-    "日精进.md",
-    "mathhub/field.md",
-    "mathhub/Caratheodory构造法.md",
-    "mathhub/二次型化简方法.md",
     "线性代数.pdf",
     "附件",
     "未命名.base",
