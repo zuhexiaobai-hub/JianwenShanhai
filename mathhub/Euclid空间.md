@@ -26,3 +26,22 @@
 >     (\alpha_i,\alpha_j)=\delta_{ij},
 >     \quad i,j=1,2,\ldots,n.
 > $$
+
+下面我们将任意一组线性无关的向量化为标准正交向量基: \
+给定一个线性无关组 $(\alpha_{1},\alpha_{2},\cdots,\alpha_{n})$, 需要分两步进行:
+1. 正交化: 取
+   
+$$
+    \left\{
+    \begin{aligned}
+        \beta_1 &= \alpha_1, \\
+        \beta_k &= \alpha_k-\sum_{j=1}^{k-1}\frac{(\alpha_k,\beta_j)}{(\beta_j,\beta_j)}\beta_j.
+    \end{aligned}
+    \right.
+$$
+
+容易验证 $(\beta_{1},\beta_{2},\cdots,\beta_{n})$ 为正交向量组.
+
+2. 单位化: 取 $e_{i} = \frac{\beta_{i}}{\|\beta_{i}\|}$, 那么我们有 $(e_{1},e_{2},\cdots,e_{n})$ 为标准正交向量组.
+
+这种方法称为 **Gram-Schmidt 正交化**.

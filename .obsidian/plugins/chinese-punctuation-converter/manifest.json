@@ -1,0 +1,11 @@
+{
+	"id": "chinese-punctuation-converter",
+	"name": "Chinese Punctuation Converter",
+	"version": "1.0.3",
+	"minAppVersion": "0.15.0",
+	"description": "自动将中文标点转化为对应的英文标点. Automatically convert Chinese punctuation to corresponding English punctuation.",
+	"author": "Enthusjast",
+	"authorUrl": "https://github.com/Enthusjast",
+	"fundingUrl": "",
+	"isDesktopOnly": false
+}
