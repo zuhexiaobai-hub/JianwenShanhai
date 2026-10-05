@@ -38,7 +38,7 @@
   "showUnsupportedFiles": true,
   "trashOption": "system",
   "showInlineTitle": false,
-  "defaultViewMode": "source",
+  "defaultViewMode": "preview",
   "livePreview": false,
   "showLineNumber": false,
   "propertiesInDocument": "source",
@@ -47,5 +47,6 @@
   "spellcheck": true,
   "autoPairMarkdown": true,
   "newFileFolderPath": "仓库",
-  "attachmentFolderPath": "附件"
+  "attachmentFolderPath": "附件",
+  "newLinkFormat": "shortest"
 }

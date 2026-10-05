@@ -1,0 +1,4 @@
+/* 调整所有 callout 的圆角 */
+.callout {
+    border-radius: 18px !important;
+}

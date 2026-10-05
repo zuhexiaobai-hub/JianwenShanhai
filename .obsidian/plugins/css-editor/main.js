@@ -9,6 +9,9 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -30,6 +33,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
 
 // src/main.ts
 var main_exports = {};
@@ -37,10 +43,10 @@ __export(main_exports, {
   default: () => CssEditorPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian12 = require("obsidian");
+var import_obsidian11 = require("obsidian");
 
 // src/views/CssEditorView.ts
-var import_obsidian8 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 var import_view10 = require("@codemirror/view");
 
 // node_modules/@replit/codemirror-vim/dist/index.js
@@ -7142,12 +7148,12 @@ function hardWrap(cm, options) {
     }
   }
 }
-var getDrawSelectionConfig2 = View.getDrawSelectionConfig || /* @__PURE__ */ function() {
+var getDrawSelectionConfig2 = View.getDrawSelectionConfig || /* @__PURE__ */ (function() {
   let defaultConfig = { cursorBlinkRate: 1200 };
   return function() {
     return defaultConfig;
   };
-}();
+})();
 var Piece = class {
   constructor(left, top, height, fontFamily, fontSize, fontWeight, color, className, letter, partial) {
     this.left = left;
@@ -12795,63 +12801,50 @@ var colorPickerPlugin = import_view8.ViewPlugin.fromClass(
 
 // src/modals/CssSnippetDeleteConfirmModal.ts
 var import_obsidian5 = require("obsidian");
-var CssSnippetDeleteConfirmModal = class extends import_obsidian5.Modal {
+var CssSnippetDeleteConfirmModal = class extends import_obsidian5.ConfirmationModal {
   constructor(app, plugin, file, onDone) {
     super(app);
     this.deleted = false;
-    this.plugin = plugin;
-    this.file = file;
     this.onDone = onDone;
-  }
-  async onOpen() {
-    await super.onOpen();
-    this.titleEl.setText("Delete CSS snippet");
-    this.containerEl.addClass("css-editor-delete-confirm-modal");
-    this.buildForm();
-  }
-  buildForm() {
+    this.setTitle("Delete CSS snippet");
+    this.modalEl.addClass("css-editor-delete-confirm-modal");
     this.contentEl.createEl("p", {
-      text: `Are you sure you want to delete "${this.file.name}"?`
+      text: `Are you sure you want to delete "${file.name}"?`
     });
     this.contentEl.createEl("p", {
       text: "This action cannot be undone."
     });
-    const buttonContainer = this.contentEl.createDiv(
-      "modal-button-container"
-    );
-    const dontAskAgainLabel = buttonContainer.createEl("label", {
-      cls: "mod-checkbox"
-    });
-    const dontAskAgainCheckbox = dontAskAgainLabel.createEl("input", {
-      type: "checkbox"
-    });
-    dontAskAgainCheckbox.insertAdjacentText("afterend", "Don't ask again");
-    new import_obsidian5.ButtonComponent(buttonContainer).setButtonText("Delete").setWarning().onClick(() => this.delete());
-    new import_obsidian5.ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => this.close());
-  }
-  async delete() {
-    try {
-      const dontAskAgain = this.contentEl.querySelector(
-        'input[type="checkbox"]'
-      );
-      if (dontAskAgain == null ? void 0 : dontAskAgain.checked) {
-        this.plugin.settings.promptDelete = false;
-        await this.plugin.saveSettings();
-      }
-      await deleteSnippet(this.app, this.file);
-      this.deleted = true;
-      this.close();
-    } catch (err) {
-      handleError(err, "Failed to delete CSS file.");
+    let dontAskAgain = false;
+    if (!import_obsidian5.Platform.isMobile) {
+      this.addCheckbox("Don't ask again", (checked) => {
+        dontAskAgain = checked;
+      });
     }
+    this.addButton((btn) => {
+      btn.setButtonText("Delete").setDestructive().setCta().onClick(async () => {
+        try {
+          if (dontAskAgain) {
+            plugin.settings.promptDelete = false;
+            await plugin.saveSettings();
+          }
+          await deleteSnippet(app, file);
+          this.deleted = true;
+          return false;
+        } catch (err) {
+          handleError(err, "Failed to delete CSS file.");
+          return true;
+        }
+      });
+    });
+    this.addCancelButton();
   }
   onClose() {
+    super.onClose();
     this.onDone(this.deleted);
   }
 };
 
 // src/utils/workspace-helpers.ts
-var import_obsidian6 = require("obsidian");
 async function openView(workspace, type, openInNewTab, state) {
   const leaf = workspace.getLeaf(openInNewTab);
   await leaf.setViewState({
@@ -12864,9 +12857,7 @@ async function detachCssFileLeaves(workspace, file) {
   var _a;
   const leaves = workspace.getLeavesOfType(VIEW_TYPE_CSS);
   for (const leaf of leaves) {
-    if ((0, import_obsidian6.requireApiVersion)("1.7.2")) {
-      await leaf.loadIfDeferred();
-    }
+    await leaf.loadIfDeferred();
     if (((_a = leaf.getViewState().state) == null ? void 0 : _a.file) === file.name) {
       leaf.detach();
     }
@@ -12898,7 +12889,7 @@ async function deleteSnippet(app, file) {
 // src/components/Search.ts
 var import_view9 = require("@codemirror/view");
 var import_search3 = require("@codemirror/search");
-var import_obsidian7 = require("obsidian");
+var import_obsidian6 = require("obsidian");
 var Search = class {
   constructor(parentScope, editor, parentEl, onClose) {
     this.editor = editor;
@@ -12940,11 +12931,11 @@ var Search = class {
       cls: "document-search-buttons",
       type: "text"
     });
-    new import_obsidian7.ButtonComponent(searchButtonContainerEl).setClass("document-search-button").setClass("clickable-icon").setIcon("lucide-arrow-up").setTooltip("Previous\n\u21E7 F3", { placement: "top" }).onClick(() => this.findPrevious());
-    new import_obsidian7.ButtonComponent(searchButtonContainerEl).setClass("document-search-button").setClass("clickable-icon").setIcon("lucide-arrow-down").setTooltip("Next\nF3", { placement: "top" }).onClick(() => this.findNext());
-    new import_obsidian7.ButtonComponent(searchButtonContainerEl).setClass("document-search-button").setClass("clickable-icon").setIcon("lucide-text-select").setTooltip("Find all\n\u2325 Enter", { placement: "top" }).onClick(() => this.findAll());
-    new import_obsidian7.ButtonComponent(documentSearchEl).setClass("document-search-close-button").setClass("clickable-icon").setIcon("lucide-x").setTooltip("Exit search", { placement: "top" }).onClick(() => this.close());
-    this.scope = new import_obsidian7.Scope(parentScope);
+    new import_obsidian6.ButtonComponent(searchButtonContainerEl).setClass("document-search-button").setClass("clickable-icon").setIcon("lucide-arrow-up").setTooltip("Previous\n\u21E7 F3", { placement: "top" }).onClick(() => this.findPrevious());
+    new import_obsidian6.ButtonComponent(searchButtonContainerEl).setClass("document-search-button").setClass("clickable-icon").setIcon("lucide-arrow-down").setTooltip("Next\nF3", { placement: "top" }).onClick(() => this.findNext());
+    new import_obsidian6.ButtonComponent(searchButtonContainerEl).setClass("document-search-button").setClass("clickable-icon").setIcon("lucide-text-select").setTooltip("Find all\n\u2325 Enter", { placement: "top" }).onClick(() => this.findAll());
+    new import_obsidian6.ButtonComponent(documentSearchEl).setClass("document-search-close-button").setClass("clickable-icon").setIcon("lucide-x").setTooltip("Exit search", { placement: "top" }).onClick(() => this.close());
+    this.scope = new import_obsidian6.Scope(parentScope);
     this.scope.register([], "F3", (e) => {
       e.preventDefault();
       this.findNext();
@@ -13098,7 +13089,7 @@ function createSearchCursor(editor, query) {
 
 // src/views/CssEditorView.ts
 var VIEW_TYPE_CSS = "css-editor-view";
-var CssEditorView = class extends import_obsidian8.ItemView {
+var CssEditorView = class extends import_obsidian7.ItemView {
   constructor(leaf, plugin) {
     var _a, _b;
     super(leaf);
@@ -13106,7 +13097,7 @@ var CssEditorView = class extends import_obsidian8.ItemView {
     this.isSavingTitle = false;
     /** If the editor contents differ from the file contents on disk */
     this.isEditorDirty = false;
-    this.requestSave = (0, import_obsidian8.debounce)(this.save.bind(this), 1e3);
+    this.requestSave = (0, import_obsidian7.debounce)(this.save.bind(this), 1e3);
     this.plugin = plugin;
     this.navigation = true;
     this.editor = new import_view10.EditorView({
@@ -13145,7 +13136,7 @@ var CssEditorView = class extends import_obsidian8.ItemView {
         })
       ]
     });
-    this.scope = new import_obsidian8.Scope(this.app.scope);
+    this.scope = new import_obsidian7.Scope(this.app.scope);
     this.initialScope = this.scope;
     this.scope.register(null, "F2", () => {
       if (!this.file) return;
@@ -13175,7 +13166,7 @@ var CssEditorView = class extends import_obsidian8.ItemView {
       if (this.editor.hasFocus) window.clearInterval(timer);
     }, 200);
     this.registerInterval(timer);
-    if (import_obsidian8.Platform.isMobileApp) {
+    if (import_obsidian7.Platform.isMobileApp) {
       this.titleEl.addEventListener("touchstart", () => {
         this.titleEl.contentEditable = "true";
       });
@@ -13281,7 +13272,7 @@ var CssEditorView = class extends import_obsidian8.ItemView {
   onTitleBlur() {
     this.saveTitle(this.titleEl).catch(handleError);
     this.titleEl.spellcheck = false;
-    if (import_obsidian8.Platform.isMobileApp) {
+    if (import_obsidian7.Platform.isMobileApp) {
       this.titleEl.contentEditable = "false";
     }
     this.editor.focus();
@@ -13412,8 +13403,8 @@ var CssEditorView = class extends import_obsidian8.ItemView {
 };
 
 // src/modals/CssSnippetFuzzySuggestModal.ts
-var import_obsidian9 = require("obsidian");
-var CssSnippetFuzzySuggestModal = class extends import_obsidian9.FuzzySuggestModal {
+var import_obsidian8 = require("obsidian");
+var CssSnippetFuzzySuggestModal = class extends import_obsidian8.FuzzySuggestModal {
   constructor(app, plugin) {
     super(app);
     this.plugin = plugin;
@@ -13461,12 +13452,12 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian9.FuzzySuggestMod
     this.setInstructions([
       { command: "\u2191\u2193", purpose: "to navigate" },
       {
-        command: import_obsidian9.Platform.isMacOS ? "\u2318 \u21B5" : "ctrl \u21B5",
+        command: import_obsidian8.Platform.isMacOS ? "\u2318 \u21B5" : "ctrl \u21B5",
         purpose: "to open in new tab"
       },
       { command: "shift \u21B5", purpose: "to create" },
       {
-        command: import_obsidian9.Platform.isMacOS ? "\u2318 del" : "ctrl del",
+        command: import_obsidian8.Platform.isMacOS ? "\u2318 del" : "ctrl del",
         purpose: "to delete"
       },
       { command: "tab", purpose: "to enable/disable" },
@@ -13526,7 +13517,7 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian9.FuzzySuggestMod
       const isEnabled = this.isEnabled(item.item);
       const isNewElement = this.inputEl.value.trim().length > 0 && item.match.score === 0;
       if (!isNewElement) {
-        const button = new import_obsidian9.ButtonComponent(el).setButtonText(isEnabled ? "enabled" : "disabled").setClass("css-editor-status").onClick((e) => {
+        const button = new import_obsidian8.ButtonComponent(el).setButtonText(isEnabled ? "enabled" : "disabled").setClass("css-editor-status").onClick((e) => {
           e.stopPropagation();
           const newState = toggleSnippetFileState(
             this.app,
@@ -13614,7 +13605,7 @@ var CssSnippetFuzzySuggestModal = class extends import_obsidian9.FuzzySuggestMod
       } else if (evt.key === "Delete") {
         tryDeleteSnippet(this.plugin, item).then((deleted) => {
           if (deleted) {
-            new import_obsidian9.Notice(`"${item.name}" was deleted.`);
+            new import_obsidian8.Notice(`"${item.name}" was deleted.`);
           }
         }).catch((err) => {
           handleError(err, "Failed to delete CSS file.");
@@ -13684,8 +13675,8 @@ function isKeymapInfo(hotkey) {
 }
 
 // src/modals/CssSnippetCreateModal.ts
-var import_obsidian10 = require("obsidian");
-var CssSnippetCreateModal = class extends import_obsidian10.Modal {
+var import_obsidian9 = require("obsidian");
+var CssSnippetCreateModal = class extends import_obsidian9.Modal {
   constructor(app, plugin) {
     super(app);
     this.value = "";
@@ -13698,7 +13689,7 @@ var CssSnippetCreateModal = class extends import_obsidian10.Modal {
     this.buildForm();
   }
   buildForm() {
-    const textInput = new import_obsidian10.TextComponent(this.contentEl);
+    const textInput = new import_obsidian9.TextComponent(this.contentEl);
     textInput.setPlaceholder("CSS snippet file name (ex: snippet.css)");
     textInput.onChange((val) => this.value = val);
     textInput.inputEl.addEventListener("keydown", (evt) => {
@@ -13707,8 +13698,8 @@ var CssSnippetCreateModal = class extends import_obsidian10.Modal {
     const buttonContainer = this.contentEl.createDiv(
       "modal-button-container"
     );
-    new import_obsidian10.ButtonComponent(buttonContainer).setButtonText("Save").setCta().onClick(() => this.save());
-    new import_obsidian10.ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => this.close());
+    new import_obsidian9.ButtonComponent(buttonContainer).setButtonText("Save").setCta().onClick(() => this.save());
+    new import_obsidian9.ButtonComponent(buttonContainer).setButtonText("Cancel").onClick(() => this.close());
   }
   async handleKeydown(evt) {
     if (evt.key === "Escape") {
@@ -13730,7 +13721,97 @@ var CssSnippetCreateModal = class extends import_obsidian10.Modal {
 // src/settings/CssEditorSettingTab.ts
 var import_language10 = require("@codemirror/language");
 var import_view11 = require("@codemirror/view");
-var import_obsidian11 = require("obsidian");
+var import_obsidian10 = require("obsidian");
+function updateCSSEditorView(app, spec) {
+  app.workspace.getLeavesOfType(VIEW_TYPE_CSS).forEach((leaf) => {
+    if (leaf.view instanceof CssEditorView) {
+      leaf.view.dispatchEditorTransaction(spec);
+    }
+  });
+}
+var _CSSEditorSettingTab_instances, applyLineWrap_fn, applyIndentSize_fn, applyRelativeLineNumbers_fn;
+var CSSEditorSettingTab = class extends import_obsidian10.PluginSettingTab {
+  constructor(app, plugin) {
+    super(app, plugin);
+    __privateAdd(this, _CSSEditorSettingTab_instances);
+    this.icon = "css-editor-logo";
+    this.plugin = plugin;
+  }
+  getSettingDefinitions() {
+    return [
+      {
+        type: "group",
+        items: [
+          {
+            name: "Line wrap",
+            desc: "Toggle line wrap in the editor.",
+            control: { type: "toggle", key: "lineWrap" }
+          },
+          {
+            name: "Indent size",
+            desc: "Adjust the amount of spaces used for indentation.",
+            control: {
+              type: "slider",
+              key: "indentSize",
+              min: 1,
+              max: 8,
+              step: 1
+            }
+          },
+          {
+            name: "Relative line numbers",
+            desc: "Show line numbers relative to cursor position.",
+            control: { type: "toggle", key: "relativeLineNumbers" }
+          }
+        ]
+      },
+      {
+        type: "group",
+        heading: "Trash",
+        items: [
+          {
+            name: "Confirm before deleting files",
+            desc: "Avoid accidentally deleting files.",
+            control: { type: "toggle", key: "promptDelete" }
+          }
+        ]
+      }
+    ];
+  }
+  /**
+   * Persist the value, then apply it to any open CSS editors.
+   */
+  async setControlValue(key, value) {
+    await super.setControlValue(key, value);
+    if (key === "lineWrap") {
+      __privateMethod(this, _CSSEditorSettingTab_instances, applyLineWrap_fn).call(this, value);
+    } else if (key === "indentSize") {
+      __privateMethod(this, _CSSEditorSettingTab_instances, applyIndentSize_fn).call(this, value);
+    } else if (key === "relativeLineNumbers") {
+      __privateMethod(this, _CSSEditorSettingTab_instances, applyRelativeLineNumbers_fn).call(this, value);
+    }
+  }
+};
+_CSSEditorSettingTab_instances = new WeakSet();
+applyLineWrap_fn = function(val) {
+  updateCSSEditorView(this.app, {
+    effects: lineWrap.reconfigure(val ? import_view11.EditorView.lineWrapping : [])
+  });
+};
+applyIndentSize_fn = function(val) {
+  updateCSSEditorView(this.app, {
+    effects: indentSize.reconfigure(import_language10.indentUnit.of("".padEnd(val)))
+  });
+};
+applyRelativeLineNumbers_fn = function(val) {
+  updateCSSEditorView(this.app, {
+    effects: relativeLineNumberGutter.reconfigure(
+      (0, import_view11.lineNumbers)({
+        formatNumber: val ? relativeLineNumbersFormatter : absoluteLineNumbers
+      })
+    )
+  });
+};
 
 // src/settings/settings.ts
 var DEFAULT_SETTINGS = {
@@ -13740,100 +13821,18 @@ var DEFAULT_SETTINGS = {
   relativeLineNumbers: false
 };
 
-// src/settings/CssEditorSettingTab.ts
-function updateCSSEditorView(app, spec) {
-  app.workspace.getLeavesOfType(VIEW_TYPE_CSS).forEach((leaf) => {
-    if (leaf.view instanceof CssEditorView) {
-      leaf.view.dispatchEditorTransaction(spec);
-    }
-  });
-}
-var CSSEditorSettingTab = class extends import_obsidian11.PluginSettingTab {
-  constructor(app, plugin) {
-    super(app, plugin);
-    this.icon = "css-editor-logo";
-    this.plugin = plugin;
-  }
-  display() {
-    this.containerEl.empty();
-    const editorGroup = new import_obsidian11.SettingGroup(this.containerEl);
-    editorGroup.addSetting((setting) => {
-      setting.setName("Line wrap").setDesc("Toggle line wrap in the editor.").addToggle((toggle) => {
-        toggle.setValue(this.plugin.settings.lineWrap);
-        toggle.onChange(async (val) => {
-          this.plugin.settings.lineWrap = val;
-          await this.plugin.saveSettings();
-          updateCSSEditorView(this.app, {
-            effects: lineWrap.reconfigure(
-              val ? import_view11.EditorView.lineWrapping : []
-            )
-          });
-        });
-      });
-    });
-    editorGroup.addSetting((setting) => {
-      setting.setName("Indent size").setDesc("Adjust the amount of spaces used for indentation.").addExtraButton((btn) => {
-        btn.setIcon("reset").setTooltip("Restore default").onClick(async () => {
-          this.plugin.settings.indentSize = DEFAULT_SETTINGS.indentSize;
-          await this.plugin.saveSettings();
-          updateCSSEditorView(this.app, {
-            effects: indentSize.reconfigure(
-              import_language10.indentUnit.of("".padEnd(2))
-            )
-          });
-          this.display();
-        });
-      }).addSlider((slider) => {
-        slider.setLimits(1, 8, 1).setValue(this.plugin.settings.indentSize).setDynamicTooltip().onChange(async (val) => {
-          this.plugin.settings.indentSize = val;
-          await this.plugin.saveSettings();
-          updateCSSEditorView(this.app, {
-            effects: indentSize.reconfigure(
-              import_language10.indentUnit.of("".padEnd(val))
-            )
-          });
-        });
-      });
-    });
-    editorGroup.addSetting((setting) => {
-      setting.setName("Relative line numbers").setDesc("Show line numbers relative to cursor position.").addToggle((toggle) => {
-        toggle.setValue(this.plugin.settings.relativeLineNumbers);
-        toggle.onChange(async (val) => {
-          this.plugin.settings.relativeLineNumbers = val;
-          await this.plugin.saveSettings();
-          updateCSSEditorView(this.app, {
-            effects: relativeLineNumberGutter.reconfigure(
-              (0, import_view11.lineNumbers)({
-                formatNumber: val ? relativeLineNumbersFormatter : absoluteLineNumbers
-              })
-            )
-          });
-        });
-      });
-    });
-    const trashGroup = new import_obsidian11.SettingGroup(this.containerEl).setHeading(
-      "Trash"
-    );
-    trashGroup.addSetting((setting) => {
-      setting.setName("Confirm file deletion").setDesc("Ask before deleting a file.").addToggle((toggle) => {
-        toggle.setValue(this.plugin.settings.promptDelete);
-        toggle.onChange(async (val) => {
-          this.plugin.settings.promptDelete = val;
-          await this.plugin.saveSettings();
-        });
-      });
-    });
-  }
-};
-
 // src/icons/css-icon.svg
 var css_icon_default = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 1000 1000" role="img">\n  <defs>\n    <mask id="css-editor-logo-cutout-mask">\n      <rect width="1000" height="1000" fill="white"/>\n      <path fill="black" d="m358.1,920c-64.23-.06-103.86-36.23-103.1-102.79,0,0,0-168.39,0-168.39,0-33.74,9.88-59.4,29.64-76.96,35.49-34.19,117.83-36.27,152.59.52,21.42,18.89,29.5,57.48,27.58,93.49h-73.72c.56-14.15-.19-35.58-8.51-43.65-10.81-14.63-39.36-12.91-46.91,2.32-4.64,8.26-6.96,20.49-6.96,36.67v146.18c0,30.65,10.65,46.15,31.96,46.49,9.96,0,17.53-3.62,22.68-10.85,7.19-8.58,8.31-27.58,7.73-41.32h73.72c5.04,70.07-36.32,119.16-106.71,118.29Zm234.04,0c-71.17.98-103.01-49.66-101.04-118.29h69.59c-1.93,29.92,8.35,57.17,32.99,55.27,10.99,0,18.73-3.44,23.2-10.33,8.5-12.59,10.09-48.95-2.06-63.02-8.49-13.55-39.03-25.51-55.16-33.57-23.03-11.02-39.61-24.1-49.75-39.26-22.87-33.64-20.75-107.48,11.34-137.4,31.18-36.92,112.61-38.62,143.82-.77,19.25,19.51,27.66,57.9,26.03,93.23h-67.02c.57-14.52-.8-37.95-6.44-46.49-3.95-7.23-11.43-10.85-22.42-10.85-19.59,0-29.38,11.71-29.38,35.12.21,24.86,9.9,35.06,32.48,45.45,29.24,11.36,66.42,30.76,79.9,54.24,40.2,71.54,12.62,180.82-86.09,176.65Zm224.76,0c-71.17.98-103.01-49.66-101.04-118.29h69.59c-1.93,29.92,8.35,57.17,32.99,55.27,10.99,0,18.73-3.44,23.2-10.33,8.5-12.59,10.09-48.95-2.06-63.02-8.49-13.55-39.03-25.51-55.16-33.57-23.03-11.02-39.61-24.1-49.75-39.26-22.87-33.64-20.75-107.48,11.34-137.4,31.18-36.92,112.61-38.62,143.82-.77,19.25,19.51,27.66,57.9,26.03,93.23h-67.02c.57-14.52-.8-37.95-6.44-46.49-3.95-7.23-11.43-10.85-22.42-10.85-19.59,0-29.38,11.71-29.38,35.12.21,24.86,9.9,35.06,32.48,45.45,29.24,11.36,66.42,30.76,79.9,54.24,40.2,71.54,12.62,180.82-86.09,176.65Z"/>\n    </mask>\n  </defs>\n  <path fill="currentColor" mask="url(#css-editor-logo-cutout-mask)" d="M0 0H840A160 160 0 0 1 1000 160V840A160 160 0 0 1 840 1000H160A160 160 0 0 1 0 840V0Z"/>\n</svg>';
 
 // src/main.ts
-var CssEditorPlugin = class extends import_obsidian12.Plugin {
+var CssEditorPlugin = class extends import_obsidian11.Plugin {
+  constructor() {
+    super(...arguments);
+    this.settings = DEFAULT_SETTINGS;
+  }
   async onload() {
     await this.loadSettings();
-    (0, import_obsidian12.addIcon)("css-editor-logo", css_icon_default);
+    (0, import_obsidian11.addIcon)("css-editor-logo", css_icon_default);
     this.addCommand({
       id: "create-css-snippet",
       name: "Create CSS snippet",
@@ -13863,7 +13862,7 @@ var CssEditorPlugin = class extends import_obsidian12.Plugin {
         const cssFile = new CssFile(file);
         tryDeleteSnippet(this, cssFile).then((deleted) => {
           if (deleted) {
-            new import_obsidian12.Notice(`"${cssFile.name}" was deleted.`);
+            new import_obsidian11.Notice(`"${cssFile.name}" was deleted.`);
           }
         }).catch((err) => {
           handleError(err, "Failed to delete CSS file.");
@@ -13882,7 +13881,7 @@ var CssEditorPlugin = class extends import_obsidian12.Plugin {
         if (checking) return true;
         const cssFile = new CssFile(file);
         const isEnabled = toggleSnippetFileState(this.app, cssFile);
-        new import_obsidian12.Notice(
+        new import_obsidian11.Notice(
           `"${cssFile.name}" is now ${isEnabled ? "enabled" : "disabled"}.`
         );
         return true;
@@ -13906,8 +13905,7 @@ var CssEditorPlugin = class extends import_obsidian12.Plugin {
       VIEW_TYPE_CSS,
       (leaf) => new CssEditorView(leaf, this)
     );
-    this.settingTab = new CSSEditorSettingTab(this.app, this);
-    this.addSettingTab(this.settingTab);
+    this.addSettingTab(new CSSEditorSettingTab(this.app, this));
   }
   onunload() {
   }
@@ -13925,7 +13923,7 @@ var CssEditorPlugin = class extends import_obsidian12.Plugin {
     var _a, _b;
     const file = await createSnippetFile(this.app, filename, "");
     (_b = (_a = this.app.customCss) == null ? void 0 : _a.setCssEnabledStatus) == null ? void 0 : _b.call(_a, file.basename, true);
-    new import_obsidian12.Notice(`"${file.name}" was created.`);
+    new import_obsidian11.Notice(`"${file.name}" was created.`);
     await openView(this.app.workspace, VIEW_TYPE_CSS, openInNewTab, {
       file
     });

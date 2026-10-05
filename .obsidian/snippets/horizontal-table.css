@@ -1,0 +1,68 @@
+/* ===== 表格：适当放宽 + 自然换行 + 局部横向滑动 ===== */
+
+/* 1. 超出屏幕时，在表格区域内滑动 */
+.markdown-rendered .el-table,
+.markdown-source-view.mod-cm6 .cm-table-widget,
+.markdown-source-view.mod-cm6 .table-wrapper {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 2. 不强制把整张表压缩到屏幕宽度 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) table {
+    table-layout: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+}
+
+/* 3. 清除竖线、底色和其他边框 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6)
+:is(table, thead, tbody, tr, th, td) {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 4. 普通列：保留阅读宽度，同时允许长句换行 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6)
+:is(th, td) {
+    width: 18em !important;
+    min-width: 14em !important;
+    max-width: 22em !important;
+
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+
+    padding: 12px 16px !important;
+    line-height: 1.65;
+    vertical-align: top !important;
+
+    border-bottom: 1px solid
+        var(--background-modifier-border) !important;
+}
+
+/* 表格按内容确定总宽度，超出屏幕时沿用局部滑动 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) table {
+    width: max-content !important;
+    max-width: none !important;
+    table-layout: auto !important;
+}
+
+/* 所有列使用同一规则：短内容紧凑，长内容达到上限后换行 */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6)
+:is(th, td) {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 22em !important;
+
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+
+    padding: 12px 12px !important;
+}

@@ -7,7 +7,9 @@
   "showRibbon": true,
   "monospaceFontFamily": "",
   "enabledCssSnippets": [
-    "formula-scroll"
+    "formula-scroll",
+    "horizontal-table",
+    "callout-rounded"
   ],
   "theme": "moonstone"
 }
